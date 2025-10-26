@@ -65,18 +65,18 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
-      <div className="fixed left-0 top-1/4 w-96 h-96 opacity-[0.06] pointer-events-none z-0">
+      <div className="fixed left-0 top-1/4 w-96 h-96 opacity-10 pointer-events-none z-0">
         <img 
-          src="https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/52a57b54-7126-4342-8ed3-db47688d4eaf.jpg"
+          src="https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/b27fed22-da89-431d-bdaf-e74edf21fd08.jpg"
           alt=""
-          className="w-full h-full object-contain"
+          className="w-full h-full object-contain mix-blend-lighten"
         />
       </div>
-      <div className="fixed right-0 top-1/3 w-96 h-96 opacity-[0.06] pointer-events-none z-0 transform scale-x-[-1]">
+      <div className="fixed right-0 top-1/3 w-96 h-96 opacity-10 pointer-events-none z-0 transform scale-x-[-1]">
         <img 
-          src="https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/52a57b54-7126-4342-8ed3-db47688d4eaf.jpg"
+          src="https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/b27fed22-da89-431d-bdaf-e74edf21fd08.jpg"
           alt=""
-          className="w-full h-full object-contain"
+          className="w-full h-full object-contain mix-blend-lighten"
         />
       </div>
 
@@ -119,12 +119,12 @@ const Index = () => {
         <div className="container mx-auto max-w-6xl">
           <div className="mb-24 relative">
             <div 
-              className="absolute inset-0 bg-cover bg-center opacity-20 rounded-lg"
+              className="absolute inset-0 bg-cover bg-center opacity-50 rounded-lg"
               style={{
                 backgroundImage: `url('https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/c7833513-9a33-47e3-a861-dbc3de4c4bbd.jpg')`,
               }}
             >
-              <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/70 to-black/60 rounded-lg"></div>
+              <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/80 to-black/85 rounded-lg"></div>
             </div>
             <div className="relative z-10 py-16">
               <h3 className="text-4xl font-light mb-12 text-center" style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '0.1em' }}>О КЛУБЕ</h3>
@@ -235,8 +235,8 @@ const Index = () => {
             </div>
             <Button 
               type="submit" 
-              className="w-full h-12 text-sm tracking-wider"
-              style={{ backgroundColor: 'rgba(139, 44, 44, 0.7)', color: '#e8d5c4' }}
+              className="w-full h-12 text-sm tracking-wider rounded-none"
+              style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', color: '#e8d5c4' }}
             >
               ОТПРАВИТЬ ЗАЯВКУ
             </Button>
