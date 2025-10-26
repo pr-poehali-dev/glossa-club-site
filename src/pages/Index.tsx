@@ -119,12 +119,11 @@ const Index = () => {
         <div className="container mx-auto max-w-6xl">
           <div className="mb-24 relative">
             <div 
-              className="absolute inset-0 bg-cover bg-center opacity-50 rounded-lg"
+              className="absolute inset-0 bg-cover bg-center rounded-lg brightness-[0.3]"
               style={{
                 backgroundImage: `url('https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/c7833513-9a33-47e3-a861-dbc3de4c4bbd.jpg')`,
               }}
             >
-              <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/80 to-black/85 rounded-lg"></div>
             </div>
             <div className="relative z-10 py-16">
               <h3 className="text-4xl font-light mb-12 text-center" style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '0.1em' }}>О КЛУБЕ</h3>
