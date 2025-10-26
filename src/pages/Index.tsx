@@ -82,14 +82,14 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
-      <div className="fixed left-0 top-1/4 w-[500px] h-[500px] opacity-[0.08] pointer-events-none z-0">
+      <div className="fixed left-0 top-1/4 w-[600px] h-[600px] opacity-[0.05] pointer-events-none z-0">
         <img 
           src="https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/b27fed22-da89-431d-bdaf-e74edf21fd08.jpg"
           alt=""
           className="w-full h-full object-contain mix-blend-lighten"
         />
       </div>
-      <div className="fixed right-0 top-1/3 w-[500px] h-[500px] opacity-[0.08] pointer-events-none z-0 transform scale-x-[-1]">
+      <div className="fixed right-0 top-1/3 w-[600px] h-[600px] opacity-[0.05] pointer-events-none z-0 transform scale-x-[-1]">
         <img 
           src="https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/b27fed22-da89-431d-bdaf-e74edf21fd08.jpg"
           alt=""
@@ -101,23 +101,21 @@ const Index = () => {
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold tracking-wider">GLOSSA CLUB</h1>
           <div className="hidden md:flex gap-8 text-sm">
-            <a href="#about" className="hover:text-accent transition-colors">О клубе</a>
-            <a href="#membership" className="hover:text-accent transition-colors">Членство</a>
-            <a href="#admission" className="hover:text-accent transition-colors">Вступление</a>
-            <a href="#contact" className="hover:text-accent transition-colors">Контакты</a>
+            <a href="#about" onClick={(e) => { e.preventDefault(); document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }); }} className="hover:text-accent transition-colors cursor-pointer">О клубе</a>
+            <a href="#membership" onClick={(e) => { e.preventDefault(); document.getElementById('membership')?.scrollIntoView({ behavior: 'smooth' }); }} className="hover:text-accent transition-colors cursor-pointer">Членство</a>
+            <a href="#admission" onClick={(e) => { e.preventDefault(); document.getElementById('admission')?.scrollIntoView({ behavior: 'smooth' }); }} className="hover:text-accent transition-colors cursor-pointer">Вступление</a>
+            <a href="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }} className="hover:text-accent transition-colors cursor-pointer">Контакты</a>
           </div>
         </div>
       </nav>
 
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center brightness-[0.4]"
-          style={{
-            backgroundImage: `url('https://cdn.poehali.dev/files/8bd9237c-22ae-4906-930d-5ae5f11dcc46.jpg')`,
-          }}
-        >
-          <div className="absolute inset-0 bg-black/50"></div>
-        </div>
+        <img
+          src="https://cdn.poehali.dev/files/8bd9237c-22ae-4906-930d-5ae5f11dcc46.jpg"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover brightness-[0.4]"
+        />
+        <div className="absolute inset-0 bg-black/50"></div>
         
         <div className="relative z-10 text-center px-6 fade-in">
           <p className="text-xs tracking-[0.4em] mb-8 text-accent/80 uppercase font-light">Закрытый клуб</p>
