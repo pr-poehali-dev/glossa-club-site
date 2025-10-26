@@ -40,45 +40,41 @@ const Index = () => {
 
   const steps = [
     {
-      number: 'i',
+      number: 'I',
       title: 'Заявка',
       description: 'Оставьте заявку на сайте для получения анкеты и подробной информации о клубе'
     },
     {
-      number: 'ii',
+      number: 'II',
       title: 'Анкетирование',
       description: 'Заполните анкету. Мы внимательно рассмотрим каждую заявку'
     },
     {
-      number: 'iii',
+      number: 'III',
       title: 'Решение',
       description: 'При положительном результате вы получите уведомление и информацию об оплате'
     },
     {
-      number: 'iv',
+      number: 'IV',
       title: 'Членство',
       description: 'После оплаты вы получите физическое приглашение и подарок с символикой клуба'
     }
   ];
 
-  const horseImages = [
-    'https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/a4e0572e-c0eb-4b9e-9114-b3c97b7a190a.jpg',
-    'https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/5180587a-43b8-4036-9e54-05054d3e6c4d.jpg',
-    'https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/70e1955f-e930-4b81-8cc1-76369b4657dd.jpg'
-  ];
+
 
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
-      <div className="fixed left-0 top-1/4 w-64 h-64 opacity-10 pointer-events-none z-0">
+      <div className="fixed left-0 top-1/4 w-96 h-96 opacity-[0.06] pointer-events-none z-0">
         <img 
-          src="https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/b27fed22-da89-431d-bdaf-e74edf21fd08.jpg"
+          src="https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/52a57b54-7126-4342-8ed3-db47688d4eaf.jpg"
           alt=""
           className="w-full h-full object-contain"
         />
       </div>
-      <div className="fixed right-0 top-1/3 w-64 h-64 opacity-10 pointer-events-none z-0 transform scale-x-[-1]">
+      <div className="fixed right-0 top-1/3 w-96 h-96 opacity-[0.06] pointer-events-none z-0 transform scale-x-[-1]">
         <img 
-          src="https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/b27fed22-da89-431d-bdaf-e74edf21fd08.jpg"
+          src="https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/52a57b54-7126-4342-8ed3-db47688d4eaf.jpg"
           alt=""
           className="w-full h-full object-contain"
         />
@@ -100,15 +96,15 @@ const Index = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/9669ed68-90ba-4530-9e26-f1c1f98e878a.jpg')`,
+            backgroundImage: `url('https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/52a57b54-7126-4342-8ed3-db47688d4eaf.jpg')`,
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/85"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/90 to-black/95"></div>
         </div>
         
         <div className="relative z-10 text-center px-6 fade-in">
           <p className="text-xs tracking-[0.4em] mb-8 text-accent/80 uppercase font-light">Закрытый клуб</p>
-          <h2 className="text-6xl md:text-8xl mb-8" style={{ fontFamily: "'Dancing Script', cursive", fontWeight: 600 }}>
+          <h2 className="text-6xl md:text-8xl mb-8 font-light tracking-wide" style={{ fontFamily: "'Montserrat', sans-serif" }}>
             The privilege of<br />being chosen
           </h2>
           <div className="h-px w-24 bg-accent/50 mx-auto"></div>
@@ -121,31 +117,28 @@ const Index = () => {
 
       <section id="about" className="py-32 px-6 relative z-10">
         <div className="container mx-auto max-w-6xl">
-          <div className="mb-24">
-            <h3 className="text-4xl font-light mb-12 text-center" style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '0.1em' }}>О КЛУБЕ</h3>
-            <div className="max-w-3xl mx-auto text-center">
-              <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                GLOSSA CLUB — эксклюзивное сообщество для тех, кто ценит качество во всём: 
-                в окружении, времяпровождении и саморазвитии.
-              </p>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Мы создали пространство, где встречаются успешные люди, разделяющие 
-                общие ценности и стремящиеся к личностному росту.
-              </p>
+          <div className="mb-24 relative">
+            <div 
+              className="absolute inset-0 bg-cover bg-center opacity-20 rounded-lg"
+              style={{
+                backgroundImage: `url('https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/c7833513-9a33-47e3-a861-dbc3de4c4bbd.jpg')`,
+              }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/70 to-black/60 rounded-lg"></div>
             </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24 max-w-4xl mx-auto">
-            {horseImages.map((img, index) => (
-              <div key={index} className="relative rounded-sm overflow-hidden opacity-40 hover:opacity-60 transition-opacity">
-                <img 
-                  src={img}
-                  alt=""
-                  className="w-full h-48 object-cover"
-                />
-                <div className="absolute inset-0 border-4 border-accent/20 pointer-events-none"></div>
+            <div className="relative z-10 py-16">
+              <h3 className="text-4xl font-light mb-12 text-center" style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '0.1em' }}>О КЛУБЕ</h3>
+              <div className="max-w-3xl mx-auto text-center">
+                <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+                  GLOSSA CLUB — эксклюзивное сообщество для тех, кто ценит качество во всём: 
+                  в окружении, времяпровождении и саморазвитии.
+                </p>
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  Мы создали пространство, где встречаются успешные люди, разделяющие 
+                  общие ценности и стремящиеся к личностному росту.
+                </p>
               </div>
-            ))}
+            </div>
           </div>
 
           <div>
@@ -174,22 +167,7 @@ const Index = () => {
             Членство в GLOSSA CLUB открывает доступ к эксклюзивным мероприятиям, 
             готовой программе на месяц и сообществу единомышленников.
           </p>
-          <div className="grid md:grid-cols-2 gap-12 mt-16 max-w-2xl mx-auto">
-            <div className="text-center">
-              <Icon name="Calendar" size={36} className="mx-auto mb-4 text-accent/70" strokeWidth={1} />
-              <h5 className="text-lg mb-3 font-light tracking-wide">Готовая программа</h5>
-              <p className="text-muted-foreground text-sm">
-                Ежемесячный календарь событий и мероприятий
-              </p>
-            </div>
-            <div className="text-center">
-              <Icon name="Users" size={36} className="mx-auto mb-4 text-accent/70" strokeWidth={1} />
-              <h5 className="text-lg mb-3 font-light tracking-wide">Премиальное окружение</h5>
-              <p className="text-muted-foreground text-sm">
-                Общение с успешными и интересными людьми
-              </p>
-            </div>
-          </div>
+
         </div>
       </section>
 
@@ -199,7 +177,7 @@ const Index = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
             {steps.map((step, index) => (
               <div key={index} className="relative text-center">
-                <div className="text-3xl font-light text-muted-foreground/30 mb-6 italic">{step.number}</div>
+                <div className="text-5xl font-light text-accent/60 mb-6" style={{ fontFamily: "'Montserrat', sans-serif" }}>{step.number}</div>
                 <h5 className="text-xl mb-4 font-light tracking-wide">{step.title}</h5>
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   {step.description}
@@ -257,7 +235,8 @@ const Index = () => {
             </div>
             <Button 
               type="submit" 
-              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground h-12 text-sm tracking-wider"
+              className="w-full h-12 text-sm tracking-wider"
+              style={{ backgroundColor: 'rgba(139, 44, 44, 0.7)', color: '#e8d5c4' }}
             >
               ОТПРАВИТЬ ЗАЯВКУ
             </Button>
