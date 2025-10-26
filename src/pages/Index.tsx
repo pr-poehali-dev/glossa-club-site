@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Card } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 
@@ -41,33 +40,54 @@ const Index = () => {
 
   const steps = [
     {
-      number: '01',
+      number: 'i',
       title: 'Заявка',
       description: 'Оставьте заявку на сайте для получения анкеты и подробной информации о клубе'
     },
     {
-      number: '02',
+      number: 'ii',
       title: 'Анкетирование',
       description: 'Заполните анкету. Мы внимательно рассмотрим каждую заявку'
     },
     {
-      number: '03',
+      number: 'iii',
       title: 'Решение',
       description: 'При положительном результате вы получите уведомление и информацию об оплате'
     },
     {
-      number: '04',
+      number: 'iv',
       title: 'Членство',
       description: 'После оплаты вы получите физическое приглашение и подарок с символикой клуба'
     }
   ];
 
+  const horseImages = [
+    'https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/a4e0572e-c0eb-4b9e-9114-b3c97b7a190a.jpg',
+    'https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/5180587a-43b8-4036-9e54-05054d3e6c4d.jpg',
+    'https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/70e1955f-e930-4b81-8cc1-76369b4657dd.jpg'
+  ];
+
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
+      <div className="fixed left-0 top-1/4 w-64 h-64 opacity-10 pointer-events-none z-0">
+        <img 
+          src="https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/b27fed22-da89-431d-bdaf-e74edf21fd08.jpg"
+          alt=""
+          className="w-full h-full object-contain"
+        />
+      </div>
+      <div className="fixed right-0 top-1/3 w-64 h-64 opacity-10 pointer-events-none z-0 transform scale-x-[-1]">
+        <img 
+          src="https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/b27fed22-da89-431d-bdaf-e74edf21fd08.jpg"
+          alt=""
+          className="w-full h-full object-contain"
+        />
+      </div>
+
       <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold tracking-wider">GLOSSA CLUB</h1>
-          <div className="hidden md:flex gap-8">
+          <div className="hidden md:flex gap-8 text-sm">
             <a href="#about" className="hover:text-accent transition-colors">О клубе</a>
             <a href="#membership" className="hover:text-accent transition-colors">Членство</a>
             <a href="#admission" className="hover:text-accent transition-colors">Вступление</a>
@@ -83,27 +103,27 @@ const Index = () => {
             backgroundImage: `url('https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/9669ed68-90ba-4530-9e26-f1c1f98e878a.jpg')`,
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/85"></div>
         </div>
         
         <div className="relative z-10 text-center px-6 fade-in">
-          <p className="text-sm tracking-[0.3em] mb-6 text-accent uppercase">Закрытый клуб</p>
-          <h2 className="text-6xl md:text-8xl font-light mb-8 italic">
+          <p className="text-xs tracking-[0.4em] mb-8 text-accent/80 uppercase font-light">Закрытый клуб</p>
+          <h2 className="text-6xl md:text-8xl mb-8" style={{ fontFamily: "'Dancing Script', cursive", fontWeight: 600 }}>
             The privilege of<br />being chosen
           </h2>
-          <div className="h-px w-32 bg-accent mx-auto"></div>
+          <div className="h-px w-24 bg-accent/50 mx-auto"></div>
         </div>
 
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <Icon name="ChevronDown" size={32} className="text-accent" />
+          <Icon name="ChevronDown" size={28} className="text-accent/60" />
         </div>
       </section>
 
-      <section id="about" className="py-32 px-6">
+      <section id="about" className="py-32 px-6 relative z-10">
         <div className="container mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
-            <div>
-              <h3 className="text-5xl font-light mb-8 italic">О клубе</h3>
+          <div className="mb-24">
+            <h3 className="text-4xl font-light mb-12 text-center" style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '0.1em' }}>О КЛУБЕ</h3>
+            <div className="max-w-3xl mx-auto text-center">
               <p className="text-muted-foreground text-lg leading-relaxed mb-6">
                 GLOSSA CLUB — эксклюзивное сообщество для тех, кто ценит качество во всём: 
                 в окружении, времяпровождении и саморазвитии.
@@ -113,102 +133,87 @@ const Index = () => {
                 общие ценности и стремящиеся к личностному росту.
               </p>
             </div>
-            <div className="relative h-96 rounded-lg overflow-hidden">
-              <img 
-                src="https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/f38a4e46-638d-49ac-ac5a-815b7361e6c0.jpg"
-                alt="Клуб"
-                className="w-full h-full object-cover"
-              />
-            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24 max-w-4xl mx-auto">
+            {horseImages.map((img, index) => (
+              <div key={index} className="relative rounded-sm overflow-hidden opacity-40 hover:opacity-60 transition-opacity">
+                <img 
+                  src={img}
+                  alt=""
+                  className="w-full h-48 object-cover"
+                />
+                <div className="absolute inset-0 border-4 border-accent/20 pointer-events-none"></div>
+              </div>
+            ))}
           </div>
 
           <div>
-            <h4 className="text-3xl font-light mb-12 text-center italic">Программа клуба</h4>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {activities.map((activity, index) => (
-                <Card 
-                  key={index}
-                  className="p-6 bg-card hover:bg-muted transition-colors cursor-default text-center border-border"
-                >
-                  <Icon name={activity.icon as any} size={32} className="mx-auto mb-4 text-accent" />
-                  <p className="text-sm">{activity.title}</p>
-                </Card>
-              ))}
+            <h4 className="text-2xl font-light mb-12 text-center" style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '0.1em' }}>ПРОГРАММА КЛУБА</h4>
+            <div className="overflow-x-auto">
+              <div className="flex gap-12 px-6 min-w-max justify-center">
+                {activities.map((activity, index) => (
+                  <div 
+                    key={index}
+                    className="flex flex-col items-center gap-3 min-w-[100px]"
+                  >
+                    <Icon name={activity.icon as any} size={20} className="text-accent/70" strokeWidth={1} />
+                    <p className="text-xs text-center text-muted-foreground">{activity.title}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="membership" className="py-32 px-6 bg-card">
+      <section id="membership" className="py-32 px-6 bg-card/30 relative z-10">
         <div className="container mx-auto max-w-4xl text-center">
-          <h3 className="text-5xl font-light mb-8 italic">Членство</h3>
+          <h3 className="text-4xl font-light mb-8" style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '0.1em' }}>ЧЛЕНСТВО</h3>
           <p className="text-muted-foreground text-lg leading-relaxed mb-12">
             Членство в GLOSSA CLUB открывает доступ к эксклюзивным мероприятиям, 
             готовой программе на месяц и сообществу единомышленников.
           </p>
-          <div className="grid md:grid-cols-3 gap-8 mt-16">
+          <div className="grid md:grid-cols-2 gap-12 mt-16 max-w-2xl mx-auto">
             <div className="text-center">
-              <Icon name="Calendar" size={48} className="mx-auto mb-4 text-accent" />
-              <h5 className="text-xl mb-3">Готовая программа</h5>
+              <Icon name="Calendar" size={36} className="mx-auto mb-4 text-accent/70" strokeWidth={1} />
+              <h5 className="text-lg mb-3 font-light tracking-wide">Готовая программа</h5>
               <p className="text-muted-foreground text-sm">
                 Ежемесячный календарь событий и мероприятий
               </p>
             </div>
             <div className="text-center">
-              <Icon name="Users" size={48} className="mx-auto mb-4 text-accent" />
-              <h5 className="text-xl mb-3">Премиальное окружение</h5>
+              <Icon name="Users" size={36} className="mx-auto mb-4 text-accent/70" strokeWidth={1} />
+              <h5 className="text-lg mb-3 font-light tracking-wide">Премиальное окружение</h5>
               <p className="text-muted-foreground text-sm">
                 Общение с успешными и интересными людьми
-              </p>
-            </div>
-            <div className="text-center">
-              <Icon name="TrendingUp" size={48} className="mx-auto mb-4 text-accent" />
-              <h5 className="text-xl mb-3">Личностный рост</h5>
-              <p className="text-muted-foreground text-sm">
-                Развитие в комфортной и мотивирующей среде
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="admission" className="py-32 px-6">
+      <section id="admission" className="py-32 px-6 relative z-10">
         <div className="container mx-auto max-w-6xl">
-          <h3 className="text-5xl font-light mb-16 text-center italic">Процесс вступления</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <h3 className="text-4xl font-light mb-16 text-center" style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '0.1em' }}>ПРОЦЕСС ВСТУПЛЕНИЯ</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
             {steps.map((step, index) => (
-              <div key={index} className="relative">
-                <div className="text-8xl font-bold text-muted/20 mb-4">{step.number}</div>
-                <h5 className="text-2xl mb-4 font-light">{step.title}</h5>
+              <div key={index} className="relative text-center">
+                <div className="text-3xl font-light text-muted-foreground/30 mb-6 italic">{step.number}</div>
+                <h5 className="text-xl mb-4 font-light tracking-wide">{step.title}</h5>
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   {step.description}
                 </p>
               </div>
             ))}
           </div>
-
-          <div className="mt-20 relative h-80 rounded-lg overflow-hidden">
-            <img 
-              src="https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/10b927bd-4097-410b-aef6-d73e0e1e449d.jpg"
-              alt="Приглашение"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end">
-              <div className="p-8">
-                <p className="text-lg text-accent italic">
-                  После вступления вы получите физическое приглашение<br />
-                  и эксклюзивный подарок с символикой клуба
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
-      <section id="contact" className="py-32 px-6 bg-card">
+      <section id="contact" className="py-32 px-6 bg-card/30 relative z-10">
         <div className="container mx-auto max-w-2xl">
-          <h3 className="text-5xl font-light mb-6 text-center italic">Оставить заявку</h3>
-          <p className="text-center text-muted-foreground mb-12">
+          <h3 className="text-4xl font-light mb-6 text-center" style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '0.1em' }}>ОСТАВИТЬ ЗАЯВКУ</h3>
+          <p className="text-center text-muted-foreground mb-12 text-sm">
             Заполните форму, и мы вышлем вам анкету, программу клуба и условия членства
           </p>
           
@@ -219,7 +224,7 @@ const Index = () => {
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 required
-                className="bg-background border-border"
+                className="bg-background/50 border-border/50 h-12"
               />
             </div>
             <div>
@@ -229,7 +234,7 @@ const Index = () => {
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 required
-                className="bg-background border-border"
+                className="bg-background/50 border-border/50 h-12"
               />
             </div>
             <div>
@@ -239,7 +244,7 @@ const Index = () => {
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 required
-                className="bg-background border-border"
+                className="bg-background/50 border-border/50 h-12"
               />
             </div>
             <div>
@@ -247,43 +252,43 @@ const Index = () => {
                 placeholder="Расскажите о себе (необязательно)"
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="bg-background border-border min-h-32"
+                className="bg-background/50 border-border/50 min-h-32"
               />
             </div>
             <Button 
               type="submit" 
-              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground h-12 text-lg"
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground h-12 text-sm tracking-wider"
             >
-              Отправить заявку
+              ОТПРАВИТЬ ЗАЯВКУ
             </Button>
           </form>
 
-          <div className="mt-12 text-center text-sm text-muted-foreground">
+          <div className="mt-12 text-center text-xs text-muted-foreground">
             <p>Отправляя заявку, вы соглашаетесь на обработку персональных данных</p>
           </div>
         </div>
       </section>
 
-      <footer className="py-12 px-6 border-t border-border">
+      <footer className="py-12 px-6 border-t border-border/50 relative z-10">
         <div className="container mx-auto max-w-6xl">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div>
-              <h4 className="text-2xl font-bold tracking-wider mb-2">GLOSSA CLUB</h4>
-              <p className="text-sm text-muted-foreground">Закрытый клуб премиального качества</p>
+              <h4 className="text-xl font-bold tracking-wider mb-2">GLOSSA CLUB</h4>
+              <p className="text-xs text-muted-foreground">Закрытый клуб премиального качества</p>
             </div>
             <div className="flex gap-6">
               <a href="#" className="text-muted-foreground hover:text-accent transition-colors">
-                <Icon name="Instagram" size={24} />
+                <Icon name="Instagram" size={20} />
               </a>
               <a href="#" className="text-muted-foreground hover:text-accent transition-colors">
-                <Icon name="Facebook" size={24} />
+                <Icon name="Facebook" size={20} />
               </a>
               <a href="#" className="text-muted-foreground hover:text-accent transition-colors">
-                <Icon name="Mail" size={24} />
+                <Icon name="Mail" size={20} />
               </a>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-border text-center text-sm text-muted-foreground">
+          <div className="mt-8 pt-8 border-t border-border/30 text-center text-xs text-muted-foreground">
             <p>© 2024 GLOSSA CLUB. Все права защищены.</p>
           </div>
         </div>
