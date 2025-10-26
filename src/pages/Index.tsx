@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -13,6 +13,23 @@ const Index = () => {
     phone: '',
     message: ''
   });
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll('.fade-section').forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -65,14 +82,14 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
-      <div className="fixed left-0 top-1/4 w-96 h-96 opacity-10 pointer-events-none z-0">
+      <div className="fixed left-0 top-1/4 w-[500px] h-[500px] opacity-[0.08] pointer-events-none z-0">
         <img 
           src="https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/b27fed22-da89-431d-bdaf-e74edf21fd08.jpg"
           alt=""
           className="w-full h-full object-contain mix-blend-lighten"
         />
       </div>
-      <div className="fixed right-0 top-1/3 w-96 h-96 opacity-10 pointer-events-none z-0 transform scale-x-[-1]">
+      <div className="fixed right-0 top-1/3 w-[500px] h-[500px] opacity-[0.08] pointer-events-none z-0 transform scale-x-[-1]">
         <img 
           src="https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/b27fed22-da89-431d-bdaf-e74edf21fd08.jpg"
           alt=""
@@ -94,12 +111,12 @@ const Index = () => {
 
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center brightness-[0.4]"
           style={{
-            backgroundImage: `url('https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/52a57b54-7126-4342-8ed3-db47688d4eaf.jpg')`,
+            backgroundImage: `url('https://cdn.poehali.dev/files/8bd9237c-22ae-4906-930d-5ae5f11dcc46.jpg')`,
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/90 to-black/95"></div>
+          <div className="absolute inset-0 bg-black/50"></div>
         </div>
         
         <div className="relative z-10 text-center px-6 fade-in">
@@ -115,11 +132,11 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="about" className="py-32 px-6 relative z-10">
+      <section id="about" className="py-32 px-6 relative z-10 fade-section opacity-0">
         <div className="container mx-auto max-w-6xl">
           <div className="mb-24 relative">
             <div 
-              className="absolute inset-0 bg-cover bg-center rounded-lg brightness-[0.3]"
+              className="absolute inset-0 bg-cover bg-center rounded-lg brightness-[0.3] grayscale"
               style={{
                 backgroundImage: `url('https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/c7833513-9a33-47e3-a861-dbc3de4c4bbd.jpg')`,
               }}
@@ -159,7 +176,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="membership" className="py-32 px-6 bg-card/30 relative z-10">
+      <section id="membership" className="py-32 px-6 bg-card/30 relative z-10 fade-section opacity-0">
         <div className="container mx-auto max-w-4xl text-center">
           <h3 className="text-4xl font-light mb-8" style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '0.1em' }}>ЧЛЕНСТВО</h3>
           <p className="text-muted-foreground text-lg leading-relaxed mb-12">
@@ -170,13 +187,13 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="admission" className="py-32 px-6 relative z-10">
+      <section id="admission" className="py-32 px-6 relative z-10 fade-section opacity-0">
         <div className="container mx-auto max-w-6xl">
           <h3 className="text-4xl font-light mb-16 text-center" style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '0.1em' }}>ПРОЦЕСС ВСТУПЛЕНИЯ</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
             {steps.map((step, index) => (
               <div key={index} className="relative text-center">
-                <div className="text-5xl font-light text-accent/60 mb-6" style={{ fontFamily: "'Montserrat', sans-serif" }}>{step.number}</div>
+                <div className="text-7xl text-accent/60 mb-6" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 500 }}>{step.number}</div>
                 <h5 className="text-xl mb-4 font-light tracking-wide">{step.title}</h5>
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   {step.description}
@@ -187,7 +204,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="contact" className="py-32 px-6 bg-card/30 relative z-10">
+      <section id="contact" className="py-32 px-6 bg-card/30 relative z-10 fade-section opacity-0">
         <div className="container mx-auto max-w-2xl">
           <h3 className="text-4xl font-light mb-6 text-center" style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '0.1em' }}>ОСТАВИТЬ ЗАЯВКУ</h3>
           <p className="text-center text-muted-foreground mb-12 text-sm">
