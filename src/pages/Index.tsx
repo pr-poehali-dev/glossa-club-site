@@ -69,15 +69,15 @@ const Index = () => {
     { icon: 'Coffee', title: 'Деловые завтраки' },
     { icon: 'BookOpen', title: 'Лекции по этикету' },
     { icon: 'Trophy', title: 'Теннис и гольф' },
-    { icon: 'Flower2', title: 'Йога' },
-    { icon: 'Horse', title: 'Конные прогулки' },
+    { icon: 'Sparkles', title: 'Йога' },
+    { icon: 'Trees', title: 'Конные прогулки' },
     { icon: 'Shirt', title: 'Мастер-классы по стилю' },
     { icon: 'Users', title: 'Групповые занятия' },
     { icon: 'Camera', title: 'Фотодни' },
     { icon: 'Wine', title: 'Фуршеты' },
     { icon: 'Image', title: 'Выставки' },
     { icon: 'Theater', title: 'Театр' },
-    { icon: 'Cigar', title: 'Сигарный клуб' }
+    { icon: 'Flame', title: 'Сигарный клуб' }
   ];
 
   const steps = [
@@ -198,11 +198,11 @@ const Index = () => {
                 {activities.map((activity, index) => (
                   <div 
                     key={index}
-                    className="flex flex-col items-center gap-3 min-w-[100px] activity-item"
+                    className="flex flex-col items-center gap-3 min-w-[100px] activity-item group cursor-pointer"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    <Icon name={activity.icon as any} size={20} className="text-accent/70" strokeWidth={1} />
-                    <p className="text-xs text-center text-muted-foreground">{activity.title}</p>
+                    <Icon name={activity.icon as any} size={20} className="text-accent/70 group-hover:text-accent transition-all duration-300 group-hover:scale-110" strokeWidth={1} />
+                    <p className="text-xs text-center text-muted-foreground group-hover:text-foreground transition-colors duration-300">{activity.title}</p>
                   </div>
                 ))}
               </div>
@@ -302,12 +302,10 @@ const Index = () => {
       <footer className="py-12 px-6 border-t border-border/50 relative z-10">
         <div className="container mx-auto max-w-6xl">
           <div className="flex flex-col items-center gap-6">
-            <a href="https://t.me/+n4ws0Zyg-qI3Yzdi" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80 transition-colors">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.25-5.54 3.67-.52.36-.99.53-1.42.52-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.24.37-.48 1.02-.73 3.98-1.73 6.64-2.87 7.97-3.42 3.79-1.58 4.58-1.85 5.09-1.86.11 0 .37.03.53.17.14.11.18.26.2.37.01.08.03.29.01.45z"/>
-              </svg>
+            <a href="https://t.me/+n4ws0Zyg-qI3Yzdi" target="_blank" rel="noopener noreferrer" className="text-accent/60 hover:text-accent transition-colors group">
+              <Icon name="Send" size={24} className="group-hover:scale-110 transition-transform duration-300" strokeWidth={1} />
             </a>
-            <p className="font-bold tracking-wider text-center">GLOSSA CLUB</p>
+            <p className="text-sm tracking-[0.3em] text-center font-light text-muted-foreground/80">GLOSSA CLUB</p>
           </div>
         </div>
       </footer>
