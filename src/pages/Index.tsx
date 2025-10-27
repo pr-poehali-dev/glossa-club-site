@@ -193,7 +193,7 @@ const Index = () => {
 
           <div>
             <h4 className="text-xl md:text-2xl font-light mb-12 text-center" style={{ fontFamily: "'Montserrat', sans-serif", letterSpacing: '0.1em' }}>ПРОГРАММА КЛУБА</h4>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto pb-6 custom-scrollbar">
               <div className="flex gap-6 md:gap-12 px-6 min-w-max justify-center">
                 {activities.map((activity, index) => (
                   <div 
