@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -45,33 +45,33 @@ const Index = () => {
       
       if (response.ok) {
         const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-        const oscillator1 = audioContext.createOscillator();
-        const oscillator2 = audioContext.createOscillator();
+        const oscillator = audioContext.createOscillator();
         const gainNode = audioContext.createGain();
+        const filter = audioContext.createBiquadFilter();
         
-        oscillator1.connect(gainNode);
-        oscillator2.connect(gainNode);
+        oscillator.connect(filter);
+        filter.connect(gainNode);
         gainNode.connect(audioContext.destination);
         
-        oscillator1.type = 'sine';
-        oscillator2.type = 'sine';
+        oscillator.type = 'sine';
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(400, audioContext.currentTime);
+        filter.frequency.exponentialRampToValueAtTime(800, audioContext.currentTime + 0.4);
+        filter.frequency.exponentialRampToValueAtTime(200, audioContext.currentTime + 1.2);
         
-        oscillator1.frequency.setValueAtTime(1200, audioContext.currentTime);
-        oscillator1.frequency.exponentialRampToValueAtTime(2400, audioContext.currentTime + 0.08);
-        oscillator1.frequency.exponentialRampToValueAtTime(1800, audioContext.currentTime + 0.4);
-        
-        oscillator2.frequency.setValueAtTime(1600, audioContext.currentTime);
-        oscillator2.frequency.exponentialRampToValueAtTime(3200, audioContext.currentTime + 0.08);
-        oscillator2.frequency.exponentialRampToValueAtTime(2400, audioContext.currentTime + 0.4);
+        oscillator.frequency.setValueAtTime(150, audioContext.currentTime);
+        oscillator.frequency.linearRampToValueAtTime(180, audioContext.currentTime + 0.6);
+        oscillator.frequency.linearRampToValueAtTime(140, audioContext.currentTime + 1.2);
         
         gainNode.gain.setValueAtTime(0, audioContext.currentTime);
-        gainNode.gain.linearRampToValueAtTime(0.08, audioContext.currentTime + 0.03);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.4);
+        gainNode.gain.linearRampToValueAtTime(0.06, audioContext.currentTime + 0.3);
+        gainNode.gain.linearRampToValueAtTime(0.04, audioContext.currentTime + 0.7);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1.2);
         
-        oscillator1.start(audioContext.currentTime);
-        oscillator2.start(audioContext.currentTime);
-        oscillator1.stop(audioContext.currentTime + 0.4);
-        oscillator2.stop(audioContext.currentTime + 0.4);
+        oscillator.start(audioContext.currentTime);
+        oscillator.stop(audioContext.currentTime + 1.2);
+        
+        createSparkles();
         
         toast({
           title: "Заявка отправлена",
@@ -132,7 +132,35 @@ const Index = () => {
     }
   ];
 
+  const createSparkles = () => {
+    const container = document.createElement('div');
+    container.style.cssText = 'position: fixed; top: 50%; left: 50%; pointer-events: none; z-index: 9999;';
+    document.body.appendChild(container);
 
+    for (let i = 0; i < 12; i++) {
+      const sparkle = document.createElement('div');
+      const angle = (Math.PI * 2 * i) / 12;
+      const distance = 80 + Math.random() * 40;
+      const endX = Math.cos(angle) * distance;
+      const endY = Math.sin(angle) * distance;
+      
+      sparkle.style.cssText = `
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background: white;
+        border-radius: 50%;
+        opacity: 0.6;
+        box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+        animation: sparkle-fly 1s ease-out forwards;
+        --end-x: ${endX}px;
+        --end-y: ${endY}px;
+      `;
+      container.appendChild(sparkle);
+    }
+
+    setTimeout(() => container.remove(), 1000);
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
