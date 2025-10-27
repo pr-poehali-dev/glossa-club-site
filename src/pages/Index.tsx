@@ -44,8 +44,24 @@ const Index = () => {
       });
       
       if (response.ok) {
-        const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUKvm8LJnHwU1j9vyyn0vBSh+zPLaizsKGGS46+mjUBELTKXh8bllHAU2kNryw3otBSl/zPDajDwKGGS46+mjURIMTKXi8bhlHQU2kdryxHwuBSh/zO/ejT0KGGSx7O6lUxIMTKbh8Lpm');
-        audio.play().catch(() => {});
+        const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        oscillator.frequency.setValueAtTime(1000, audioContext.currentTime);
+        oscillator.frequency.exponentialRampToValueAtTime(1200, audioContext.currentTime + 0.1);
+        oscillator.frequency.exponentialRampToValueAtTime(800, audioContext.currentTime + 0.3);
+        
+        gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+        gainNode.gain.linearRampToValueAtTime(0.3, audioContext.currentTime + 0.05);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+        
+        oscillator.start(audioContext.currentTime);
+        oscillator.stop(audioContext.currentTime + 0.5);
+        
         toast({
           title: "Заявка отправлена",
           description: "Мы свяжемся с вами в ближайшее время и вышлем анкету для рассмотрения.",
