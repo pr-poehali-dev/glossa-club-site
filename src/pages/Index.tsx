@@ -45,22 +45,33 @@ const Index = () => {
       
       if (response.ok) {
         const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-        const oscillator = audioContext.createOscillator();
+        const oscillator1 = audioContext.createOscillator();
+        const oscillator2 = audioContext.createOscillator();
         const gainNode = audioContext.createGain();
         
-        oscillator.connect(gainNode);
+        oscillator1.connect(gainNode);
+        oscillator2.connect(gainNode);
         gainNode.connect(audioContext.destination);
         
-        oscillator.frequency.setValueAtTime(1000, audioContext.currentTime);
-        oscillator.frequency.exponentialRampToValueAtTime(1200, audioContext.currentTime + 0.1);
-        oscillator.frequency.exponentialRampToValueAtTime(800, audioContext.currentTime + 0.3);
+        oscillator1.type = 'sine';
+        oscillator2.type = 'sine';
+        
+        oscillator1.frequency.setValueAtTime(1200, audioContext.currentTime);
+        oscillator1.frequency.exponentialRampToValueAtTime(2400, audioContext.currentTime + 0.08);
+        oscillator1.frequency.exponentialRampToValueAtTime(1800, audioContext.currentTime + 0.4);
+        
+        oscillator2.frequency.setValueAtTime(1600, audioContext.currentTime);
+        oscillator2.frequency.exponentialRampToValueAtTime(3200, audioContext.currentTime + 0.08);
+        oscillator2.frequency.exponentialRampToValueAtTime(2400, audioContext.currentTime + 0.4);
         
         gainNode.gain.setValueAtTime(0, audioContext.currentTime);
-        gainNode.gain.linearRampToValueAtTime(0.3, audioContext.currentTime + 0.05);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+        gainNode.gain.linearRampToValueAtTime(0.08, audioContext.currentTime + 0.03);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.4);
         
-        oscillator.start(audioContext.currentTime);
-        oscillator.stop(audioContext.currentTime + 0.5);
+        oscillator1.start(audioContext.currentTime);
+        oscillator2.start(audioContext.currentTime);
+        oscillator1.stop(audioContext.currentTime + 0.4);
+        oscillator2.stop(audioContext.currentTime + 0.4);
         
         toast({
           title: "Заявка отправлена",
