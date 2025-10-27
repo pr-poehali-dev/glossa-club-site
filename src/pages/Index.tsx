@@ -44,7 +44,10 @@ const Index = () => {
       });
       
       if (response.ok) {
-        createSparkles();
+        if (navigator.vibrate) {
+          navigator.vibrate([50, 30, 50]);
+        }
+        
         createOverlay();
         
         toast({
@@ -107,40 +110,6 @@ const Index = () => {
       description: 'После оплаты вы получите физическое приглашение и подарок с символикой клуба'
     }
   ];
-
-  const createSparkles = () => {
-    const button = document.querySelector('button[type="submit"]');
-    if (!button) return;
-    
-    const rect = button.getBoundingClientRect();
-    const container = document.createElement('div');
-    container.style.cssText = `position: fixed; left: ${rect.left + rect.width / 2}px; top: ${rect.top + rect.height / 2}px; pointer-events: none; z-index: 9999;`;
-    document.body.appendChild(container);
-
-    for (let i = 0; i < 20; i++) {
-      const sparkle = document.createElement('div');
-      const angle = (Math.PI * 2 * i) / 20;
-      const distance = 60 + Math.random() * 60;
-      const endX = Math.cos(angle) * distance;
-      const endY = Math.sin(angle) * distance;
-      
-      sparkle.style.cssText = `
-        position: absolute;
-        width: 6px;
-        height: 6px;
-        background: white;
-        border-radius: 50%;
-        opacity: 0.9;
-        box-shadow: 0 0 8px rgba(255, 255, 255, 1), 0 0 12px rgba(232, 213, 196, 0.8);
-        animation: sparkle-fly 1.2s ease-out forwards;
-        --end-x: ${endX}px;
-        --end-y: ${endY}px;
-      `;
-      container.appendChild(sparkle);
-    }
-
-    setTimeout(() => container.remove(), 1200);
-  };
 
   const createOverlay = () => {
     const overlay = document.createElement('div');
@@ -307,7 +276,6 @@ const Index = () => {
                 placeholder="Имя и фамилия"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                required
                 className="bg-background/50 border-border/50 h-12"
               />
             </div>
@@ -317,7 +285,6 @@ const Index = () => {
                 placeholder="Email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                required
                 className="bg-background/50 border-border/50 h-12"
               />
             </div>
@@ -327,7 +294,6 @@ const Index = () => {
                 placeholder="Телефон"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                required
                 className="bg-background/50 border-border/50 h-12"
               />
             </div>
