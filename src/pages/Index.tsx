@@ -44,34 +44,8 @@ const Index = () => {
       });
       
       if (response.ok) {
-        const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-        const oscillator = audioContext.createOscillator();
-        const gainNode = audioContext.createGain();
-        const filter = audioContext.createBiquadFilter();
-        
-        oscillator.connect(filter);
-        filter.connect(gainNode);
-        gainNode.connect(audioContext.destination);
-        
-        oscillator.type = 'sine';
-        filter.type = 'lowpass';
-        filter.frequency.setValueAtTime(400, audioContext.currentTime);
-        filter.frequency.exponentialRampToValueAtTime(800, audioContext.currentTime + 0.4);
-        filter.frequency.exponentialRampToValueAtTime(200, audioContext.currentTime + 1.2);
-        
-        oscillator.frequency.setValueAtTime(150, audioContext.currentTime);
-        oscillator.frequency.linearRampToValueAtTime(180, audioContext.currentTime + 0.6);
-        oscillator.frequency.linearRampToValueAtTime(140, audioContext.currentTime + 1.2);
-        
-        gainNode.gain.setValueAtTime(0, audioContext.currentTime);
-        gainNode.gain.linearRampToValueAtTime(0.06, audioContext.currentTime + 0.3);
-        gainNode.gain.linearRampToValueAtTime(0.04, audioContext.currentTime + 0.7);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1.2);
-        
-        oscillator.start(audioContext.currentTime);
-        oscillator.stop(audioContext.currentTime + 1.2);
-        
         createSparkles();
+        createOverlay();
         
         toast({
           title: "Заявка отправлена",
@@ -79,6 +53,7 @@ const Index = () => {
         });
         setFormData({ name: '', email: '', phone: '', message: '' });
       } else {
+        createOverlay();
         toast({
           title: "Ошибка",
           description: "Не удалось отправить заявку. Попробуйте позже.",
@@ -86,6 +61,7 @@ const Index = () => {
         });
       }
     } catch (error) {
+      createOverlay();
       toast({
         title: "Ошибка",
         description: "Не удалось отправить заявку. Попробуйте позже.",
@@ -133,33 +109,49 @@ const Index = () => {
   ];
 
   const createSparkles = () => {
+    const button = document.querySelector('button[type="submit"]');
+    if (!button) return;
+    
+    const rect = button.getBoundingClientRect();
     const container = document.createElement('div');
-    container.style.cssText = 'position: fixed; top: 50%; left: 50%; pointer-events: none; z-index: 9999;';
+    container.style.cssText = `position: fixed; left: ${rect.left + rect.width / 2}px; top: ${rect.top + rect.height / 2}px; pointer-events: none; z-index: 9999;`;
     document.body.appendChild(container);
 
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 20; i++) {
       const sparkle = document.createElement('div');
-      const angle = (Math.PI * 2 * i) / 12;
-      const distance = 80 + Math.random() * 40;
+      const angle = (Math.PI * 2 * i) / 20;
+      const distance = 60 + Math.random() * 60;
       const endX = Math.cos(angle) * distance;
       const endY = Math.sin(angle) * distance;
       
       sparkle.style.cssText = `
         position: absolute;
-        width: 3px;
-        height: 3px;
+        width: 6px;
+        height: 6px;
         background: white;
         border-radius: 50%;
-        opacity: 0.6;
-        box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
-        animation: sparkle-fly 1s ease-out forwards;
+        opacity: 0.9;
+        box-shadow: 0 0 8px rgba(255, 255, 255, 1), 0 0 12px rgba(232, 213, 196, 0.8);
+        animation: sparkle-fly 1.2s ease-out forwards;
         --end-x: ${endX}px;
         --end-y: ${endY}px;
       `;
       container.appendChild(sparkle);
     }
 
-    setTimeout(() => container.remove(), 1000);
+    setTimeout(() => container.remove(), 1200);
+  };
+
+  const createOverlay = () => {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position: fixed; inset: 0; background: black; opacity: 0; z-index: 99; pointer-events: none; transition: opacity 0.3s ease;';
+    document.body.appendChild(overlay);
+    
+    setTimeout(() => overlay.style.opacity = '0.4', 10);
+    setTimeout(() => {
+      overlay.style.opacity = '0';
+      setTimeout(() => overlay.remove(), 300);
+    }, 3000);
   };
 
   return (
@@ -349,7 +341,7 @@ const Index = () => {
             </div>
             <Button 
               type="submit" 
-              className="w-full h-12 text-sm tracking-wider rounded-none hover:opacity-70 transition-opacity duration-300"
+              className="w-full h-12 text-sm tracking-wider rounded-none hover:opacity-70 transition-opacity duration-300 relative overflow-visible"
               style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', color: '#e8d5c4' }}
             >
               ОТПРАВИТЬ ЗАЯВКУ
