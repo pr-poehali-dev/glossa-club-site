@@ -107,18 +107,20 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
-      <div className="fixed left-0 top-1/4 w-[600px] h-[600px] opacity-[0.05] pointer-events-none z-0">
+      <div className="fixed left-0 top-1/4 w-[600px] h-[600px] opacity-[0.05] pointer-events-none z-0 will-change-transform">
         <img 
           src="https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/b27fed22-da89-431d-bdaf-e74edf21fd08.jpg"
           alt=""
           className="w-full h-full object-contain mix-blend-lighten"
+          loading="eager"
         />
       </div>
-      <div className="fixed right-0 top-1/3 w-[600px] h-[600px] opacity-[0.05] pointer-events-none z-0 transform scale-x-[-1]">
+      <div className="fixed right-0 top-1/3 w-[600px] h-[600px] opacity-[0.05] pointer-events-none z-0 transform scale-x-[-1] will-change-transform">
         <img 
           src="https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/b27fed22-da89-431d-bdaf-e74edf21fd08.jpg"
           alt=""
           className="w-full h-full object-contain mix-blend-lighten"
+          loading="eager"
         />
       </div>
 
@@ -146,12 +148,16 @@ const Index = () => {
       </nav>
 
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <img
-          src="https://cdn.poehali.dev/files/8bd9237c-22ae-4906-930d-5ae5f11dcc46.jpg"
-          alt=""
-          className="absolute inset-0 w-full h-full object-contain brightness-[0.4] bg-black"
-        />
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-black will-change-transform">
+          <img
+            src="https://cdn.poehali.dev/files/8bd9237c-22ae-4906-930d-5ae5f11dcc46.jpg"
+            alt=""
+            className="w-full h-full object-contain brightness-[0.4]"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+        <div className="absolute inset-0 bg-black/50 will-change-transform"></div>
         
         <div className="relative z-10 text-center px-6 fade-in">
           <p className="text-xs tracking-[0.4em] mb-8 text-accent/80 uppercase font-light">Закрытый клуб</p>
