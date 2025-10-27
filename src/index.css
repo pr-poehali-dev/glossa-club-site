@@ -144,4 +144,22 @@
   .activity-item:hover {
     transform: translateY(-5px);
   }
+
+  .toast-with-lily::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath d='M100,160 Q80,120 80,90 Q80,60 100,40 Q120,60 120,90 Q120,120 100,160 M100,40 Q70,50 60,80 M100,40 Q130,50 140,80 M80,90 Q60,90 50,100 M120,90 Q140,90 150,100 M90,120 Q85,140 90,160 M110,120 Q115,140 110,160' fill='none' stroke='%23e8d5c4' stroke-width='1' opacity='0.15'/%3E%3C/svg%3E");
+    background-size: 80px 80px;
+    background-repeat: no-repeat;
+    background-position: right 20px bottom 20px;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .toast-with-lily > * {
+    position: relative;
+    z-index: 1;
+  }
 }

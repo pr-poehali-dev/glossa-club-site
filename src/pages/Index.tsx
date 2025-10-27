@@ -292,7 +292,7 @@ const Index = () => {
             </div>
             <Button 
               type="submit" 
-              className="w-full h-12 text-sm tracking-wider rounded-none"
+              className="w-full h-12 text-sm tracking-wider rounded-none hover:opacity-70 transition-opacity duration-300"
               style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', color: '#e8d5c4' }}
             >
               ОТПРАВИТЬ ЗАЯВКУ
