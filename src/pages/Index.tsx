@@ -69,15 +69,15 @@ const Index = () => {
     { icon: 'Coffee', title: 'Деловые завтраки' },
     { icon: 'BookOpen', title: 'Лекции по этикету' },
     { icon: 'Trophy', title: 'Теннис и гольф' },
-    { icon: 'Wind', title: 'Йога' },
-    { icon: 'TreePine', title: 'Конные прогулки' },
-    { icon: 'Palette', title: 'Мастер-классы по стилю' },
+    { icon: 'Flower2', title: 'Йога' },
+    { icon: 'Horse', title: 'Конные прогулки' },
+    { icon: 'Shirt', title: 'Мастер-классы по стилю' },
     { icon: 'Users', title: 'Групповые занятия' },
     { icon: 'Camera', title: 'Фотодни' },
     { icon: 'Wine', title: 'Фуршеты' },
-    { icon: 'Frame', title: 'Выставки' },
+    { icon: 'Image', title: 'Выставки' },
     { icon: 'Theater', title: 'Театр' },
-    { icon: 'Cigarette', title: 'Сигарный клуб' }
+    { icon: 'Cigar', title: 'Сигарный клуб' }
   ];
 
   const steps = [
@@ -198,7 +198,8 @@ const Index = () => {
                 {activities.map((activity, index) => (
                   <div 
                     key={index}
-                    className="flex flex-col items-center gap-3 min-w-[100px]"
+                    className="flex flex-col items-center gap-3 min-w-[100px] activity-item"
+                    style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <Icon name={activity.icon as any} size={20} className="text-accent/70" strokeWidth={1} />
                     <p className="text-xs text-center text-muted-foreground">{activity.title}</p>
