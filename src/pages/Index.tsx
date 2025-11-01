@@ -178,7 +178,7 @@ const Index = () => {
           loading="eager"
         />
       </div>
-      <div className="fixed right-0 top-1/3 w-[600px] h-[600px] opacity-[0.05] pointer-events-none z-0 transform scale-x-[-1] will-change-transform">
+      <div className="fixed right-0 top-1/3 w-[600px] h-[600px] opacity-[0.05] pointer-events-none z-0 transform scale-x-[-1] will-change-transform dove-animation-right">
         <img 
           src="https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/b27fed22-da89-431d-bdaf-e74edf21fd08.jpg"
           alt=""
