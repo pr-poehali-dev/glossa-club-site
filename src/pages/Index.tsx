@@ -19,6 +19,7 @@ const Index = () => {
     phone: ''
   });
   const [scrollY, setScrollY] = useState(0);
+  const [lilyProgress, setLilyProgress] = useState(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -36,6 +37,9 @@ const Index = () => {
 
     const handleScroll = () => {
       setScrollY(window.scrollY);
+      const maxScroll = 800;
+      const progress = Math.min(window.scrollY / maxScroll, 1);
+      setLilyProgress(progress);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -170,20 +174,36 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
-      <div className="fixed left-0 top-1/4 w-[600px] h-[600px] opacity-[0.05] pointer-events-none z-0 will-change-transform dove-animation">
+      <div 
+        className="fixed left-0 top-1/4 w-[600px] h-[600px] opacity-[0.05] pointer-events-none z-0 will-change-transform transition-transform duration-700 ease-out"
+        style={{
+          transform: `translateX(${-150 + lilyProgress * 150}%)`
+        }}
+      >
         <img 
           src="https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/b27fed22-da89-431d-bdaf-e74edf21fd08.jpg"
           alt=""
           className="w-full h-full object-contain mix-blend-lighten"
           loading="eager"
+          style={{
+            filter: `blur(${(1 - lilyProgress) * 2}px) brightness(${1 + (1 - lilyProgress) * 0.15})`
+          }}
         />
       </div>
-      <div className="fixed right-0 top-1/3 w-[600px] h-[600px] opacity-[0.05] pointer-events-none z-0 transform scale-x-[-1] will-change-transform dove-animation-right">
+      <div 
+        className="fixed right-0 top-1/3 w-[600px] h-[600px] opacity-[0.05] pointer-events-none z-0 transform scale-x-[-1] will-change-transform transition-transform duration-700 ease-out"
+        style={{
+          transform: `translateX(${150 - lilyProgress * 150}%) scaleX(-1)`
+        }}
+      >
         <img 
           src="https://cdn.poehali.dev/projects/a629715f-44e2-426c-8ec9-da82b8b47fd2/files/b27fed22-da89-431d-bdaf-e74edf21fd08.jpg"
           alt=""
           className="w-full h-full object-contain mix-blend-lighten"
           loading="eager"
+          style={{
+            filter: `blur(${(1 - lilyProgress) * 2}px) brightness(${1 + (1 - lilyProgress) * 0.15})`
+          }}
         />
       </div>
 
