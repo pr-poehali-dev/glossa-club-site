@@ -231,7 +231,12 @@ const Index = () => {
       </nav>
 
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-black will-change-transform hero-image-fade">
+        <div 
+          className="absolute inset-0 bg-black will-change-transform hero-image-fade"
+          style={{
+            transform: `translateY(${scrollY * 0.5}px)`
+          }}
+        >
           <img
             src="https://cdn.poehali.dev/files/8bd9237c-22ae-4906-930d-5ae5f11dcc46.jpg"
             alt=""
