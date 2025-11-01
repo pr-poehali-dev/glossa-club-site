@@ -211,7 +211,7 @@ const Index = () => {
       </nav>
 
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-black will-change-transform">
+        <div className="absolute inset-0 bg-black will-change-transform hero-image-fade">
           <img
             src="https://cdn.poehali.dev/files/8bd9237c-22ae-4906-930d-5ae5f11dcc46.jpg"
             alt=""
@@ -222,12 +222,12 @@ const Index = () => {
         </div>
         <div className="absolute inset-0 bg-black/50 will-change-transform"></div>
         
-        <div className="relative z-10 text-center px-4 md:px-6 fade-in">
-          <p className="text-[10px] md:text-xs tracking-[0.3em] md:tracking-[0.4em] mb-6 md:mb-8 text-accent/80 uppercase font-light">Закрытый клуб</p>
-          <h2 className="text-3xl md:text-5xl lg:text-7xl xl:text-8xl mb-6 md:mb-8 font-light tracking-wide leading-tight" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+        <div className="relative z-10 text-center px-4 md:px-6">
+          <p className="text-[10px] md:text-xs tracking-[0.3em] md:tracking-[0.4em] mb-6 md:mb-8 text-accent/80 uppercase font-light hero-text-fade" style={{animationDelay: '0.5s'}}>Закрытый клуб</p>
+          <h2 className="text-3xl md:text-5xl lg:text-7xl xl:text-8xl mb-6 md:mb-8 font-light tracking-wide leading-tight hero-text-fade" style={{ fontFamily: "'Montserrat', sans-serif", animationDelay: '0.8s' }}>
             The privilege of<br />being chosen
           </h2>
-          <div className="h-px w-16 md:w-24 bg-accent/50 mx-auto"></div>
+          <div className="h-px w-16 md:w-24 bg-accent/50 mx-auto hero-text-fade" style={{animationDelay: '1.1s'}}></div>
         </div>
 
         <div 
